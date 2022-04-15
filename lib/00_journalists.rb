@@ -75,9 +75,12 @@ def repartition(array)
         tab_keys << keys
     end
     # Assemblage des 2 arrays
-    puts tab_keys.zip(tab_values).to_h
-end
+    repartition = tab_keys.zip(tab_values).to_h
+    repartition.each do |keys, values|
+        puts "Il y a #{values} mails qui contiennent #{keys} lettres"
+    end
 
+end
 
 
 def perform

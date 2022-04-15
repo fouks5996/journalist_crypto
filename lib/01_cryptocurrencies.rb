@@ -7,23 +7,26 @@ my_hash = crypto_name.zip(crypto_value).to_h
 
 
 def big(hash)
-    max_price = hash.max_by{|key,value| value.to_f } # .last prend le dernier élément de la pair ==> Value
+    max_price = hash.max_by{|key,value| value.to_f }.last # .last prend le dernier élément de la pair ==> Value
     # max_by affiche la valeur la plus haute
     # to_f transforme la valeur
-    puts "La crypto la plus haute à l'indice #{max_price}"
+    puts "la crypto la plus chère est #{hash.select {|key,value| value == max_price}}"
+
 end
 
 def min(hash)
-    min_price = hash.min_by{|key,value| value.to_f }# .last prend le dernier élément de la pair ==> Value
+    min_price = hash.min_by{|key,value| value.to_f }.last# .last prend le dernier élément de la pair ==> Value
     # min_by affiche la valeur la plus basse
     # to_f transforme la valeur
-    puts "La crypto la plus basse à l'indice #{min_price}"
+    puts "la crypto la moins chère sont #{hash.select {|key,value| value == min_price}}"
 end
 
 def inf(hash)
     inf_price = hash.keep_if{|key,value| value.to_f > 6000} 
     # keep_if affiche les valeurs selon la condition donnée
-    puts inf_price
+    inf_price.each do |key,value|
+        puts "La crypto la plus basse s'appelle #{key} avec la valeur #{value}"
+    end
 end
 
 
